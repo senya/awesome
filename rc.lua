@@ -553,7 +553,22 @@ awful.rules.rules = {
 	-- Add titlebars to normal clients and dialogs
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
-	{ rule = { class = "Gvncviewer" }, properties = { screen = 2, tag = "9" } },
+	{ rule = { class = "Gvncviewer" }, properties = {
+		screen = function()
+			-- Find the rightmost screen by X coordinate (physical position)
+			local rightmost_screen = nil
+			local max_x = -1
+			for s in screen do
+				if s.geometry and s.geometry.x >= max_x then
+					max_x = s.geometry.x
+					rightmost_screen = s
+				end
+			end
+			-- Fallback to primary screen if no screens found
+			return rightmost_screen or screen.primary or screen[1]
+		end,
+		tag = "9"
+	} },
 	-- { rule = { class = "Thunderbird" },
 	--    properties = { screen = 2, tag = "1" } },
 	--{ rule_any = { class = {"zoom", "zoom ", "97952482425?pwd=bE1WNm1NbUh1b1RJMFJ6b3JGVnU2dz09"} },
