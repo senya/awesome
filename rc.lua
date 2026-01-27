@@ -378,7 +378,7 @@ globalkeys = gears.table.join(
 		awful.util.spawn_with_shell("autorandr --load multi2")
 	end, { description = "bebebe1", group = "bebebe" }),
 	awful.key({ modkey }, "t", function()
-		awful.util.spawn_with_shell("/home/vsementsov/work/src/scripts/my-randr")
+		awful.util.spawn_with_shell("/home/vsementsov/work/src/scripts/my-fix-after-suspend.sh")
 	end, { description = "bebebe1", group = "bebebe" }),
 
 	-- volume-widget
@@ -707,5 +707,10 @@ screen.connect_signal("added", function(s)
 		end
 	end
 end)
+
+awful.util.spawn_with_shell("nm-applet &")
+awful.util.spawn_with_shell("setxkbmap -layout us,ru -option grp:alt_shift_toggle")
+awful.util.spawn_with_shell("nmcli con up YTeamVPN")
+awful.util.spawn_with_shell("autorandr --load multi2")
 
 -- }}}
