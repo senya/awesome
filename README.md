@@ -1,10 +1,22 @@
 # Установка
 
-Simply do
+Клонируем конфиги
 
 ```
 git clone git@github.com:senya/awesome.git ~/.config/awesome
+git clone git@github.com:senya/alacritty-config.git ~/.config/alacritty
+git clone git@github.com:senya/fish-config.git ~/.config/fish
+git clone --branch my git@github.com:senya/kickstart.nvim.git ~/.config/nvim
 ```
+
+
+awesome дополнительно ничего не требует, alacritty тоже.
+
+Для fish ставим плагин-менеджер:
+
+Идем в https://github.com/jorgebucaran/fisher?ysclid=mpwtmfsfrb902143511
+и читаем как поставить.
+Дальше этот fisher должен подтянуть то что в fish_plugins
 
 # Заметки
 
